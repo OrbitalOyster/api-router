@@ -3,7 +3,7 @@ Simple express-based router.
 # Installation
 
 ```bash
-npm install @orbitaloyster/api-router
+npm install orbitaloyster/api-router
 ```
 
 # Usage
