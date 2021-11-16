@@ -3,3 +3,5 @@ export interface IRouterOptions {
   privateKeyPath?: string;
   certificatePath?: string;
 }
+
+export { Request, Response, NextFunction } from "express";

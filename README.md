@@ -3,15 +3,16 @@ Simple express-based router.
 # Installation
 
 ```bash
-npm install github:orbitaloyster/api-router
+npm install @orbitaloyster/api-router
 ```
 
 # Usage
 
 ```ts
-import Router from "@orbitaloyster/api-router";
-const router = new Router(8080);
-router.app.get("/hello", (req, res) => req.send("Hello, World!"));
-router.start();
-await router.close();
+import ApiRouter from "@orbitaloyster/api-router";
+const apiRouter = new ApiRouter(8080);
+apiRouter.app.get("/hello", (_req, res) => res.send("Hello, World!"));
+apiRouter.start();
+/* Some code */
+await apiRouter.close();
 ```

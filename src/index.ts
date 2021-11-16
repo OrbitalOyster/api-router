@@ -45,6 +45,7 @@ export default class {
   }
 
   start(): void {
+    console.log("Starting the server...");
     this.app.use((_req: Request, res: Response) => res.sendStatus(404));
     this.app.use(
       /* On error. Handler requires 4 arguments, but since _next is unused, eslint warning must be suppressed */
@@ -57,7 +58,7 @@ export default class {
     );
     /* Start server */
     this.server.listen(this.port, () =>
-      console.log(`Server started on port ${this.port}`)
+      console.log(`Server is running on port ${this.port}`)
     );
   }
 
