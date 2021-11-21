@@ -1,7 +1,13 @@
 import { Express } from "express";
 import http from "node:http";
 import https from "node:https";
-import { IRouterOptions } from "router";
+
+export interface IRouterOptions {
+    cookieSecret?: string;
+    privateKeyPath?: string;
+    certificatePath?: string;
+}
+
 export default class {
     readonly app: Express;
     readonly port: number;
