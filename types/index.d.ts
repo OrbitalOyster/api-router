@@ -1,8 +1,7 @@
-/// <reference types="node" />
 import { Express } from "express";
-import http from "http";
-import https from "https";
-import { IRouterOptions } from "../types/router";
+import http from "node:http";
+import https from "node:https";
+import { IRouterOptions } from "router";
 export default class {
     readonly app: Express;
     readonly port: number;

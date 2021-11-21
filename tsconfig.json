@@ -14,7 +14,5 @@
     "allowSyntheticDefaultImports": true,
     "rootDir": "src",
     "outDir": "dist",
-    "declaration": true,
-    "declarationDir": "types"
   }
 }

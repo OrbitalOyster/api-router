@@ -1,10 +1,10 @@
 import express, { Express, Request, Response, NextFunction } from "express";
 import cookieParser from "cookie-parser";
-import fs from "fs";
-import http from "http";
+import fs from "node:fs";
+import http from "node:http";
 import httpTerminator, { HttpTerminator } from "http-terminator";
-import https from "https";
-import { IRouterOptions } from "../types/router";
+import https from "node:https";
+import { IRouterOptions } from "router";
 
 export default class {
   /* Express app */
@@ -38,22 +38,31 @@ export default class {
     /* Enable cookies */
     cookieSecret && this.app.use(cookieParser(cookieSecret));
     /* On every request */
-    this.app.use((req, _res, next) => {
-      console.log(`${req.method} request for "${req.url}" from ${req.ip}`);
+    this.app.use((request, _response, next) => {
+      console.log(
+        `${request.method} request for "${request.url}" from ${request.ip}`
+      );
       next();
     });
   }
 
   start(): void {
     console.log("Starting the server...");
-    this.app.use((_req: Request, res: Response) => res.sendStatus(404));
+    this.app.use((_request: Request, response: Response) =>
+      response.sendStatus(404)
+    );
+    /* On error. Handler requires 4 arguments, but since _next is unused, eslint warning must be suppressed */
     this.app.use(
-      /* On error. Handler requires 4 arguments, but since _next is unused, eslint warning must be suppressed */
-      /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-      (err: Error, _req: Request, res: Response, _next: NextFunction) => {
+      (
+        error: Error,
+        _request: Request,
+        response: Response,
+        /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+        _next: NextFunction
+      ) => {
         /* Errors thrown from here go directly to browser */
-        console.log("Internal server error", err);
-        if (!res.headersSent) res.sendStatus(500);
+        console.log("Internal server error", error);
+        if (!response.headersSent) response.sendStatus(500);
       }
     );
     /* Start server */
