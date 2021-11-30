@@ -1,7 +1,7 @@
 {
   "name": "@orbitaloyster/api-router",
   "description": "Simple express-based router",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "OrbitalOyster",
   "license": "MIT",
   "repository": "OrbitalOyster/api-router",
@@ -46,6 +46,7 @@
     "@types/express": "^4.17.13",
     "@types/http-terminator": "^2.0.2",
     "cookie-parser": "^1.4.6",
+    "eslint-plugin-node": "^11.1.0",
     "express": "^4.17.1",
     "http-terminator": "^3.0.0"
   }

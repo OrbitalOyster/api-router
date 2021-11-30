@@ -8,6 +8,8 @@
     "standard",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:node/recommended",
+    "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:promise/recommended",
     "plugin:sonarjs/recommended",
@@ -20,13 +22,20 @@
     "project": "tsconfig.json"
   },
   "settings": {
+    "node": {
+      "allowModules": ["router"]
+    },
     "import/parsers": {
       "@typescript-eslint/parser": [".ts"]
     },
+    "import/core-modules": [ "router" ],
     "import/resolver": {
       "typescript": {
         "project": "tsconfig.json"
       }
     }
+  },
+  "rules": {
+    "node/no-missing-import": "off"
   }
 }

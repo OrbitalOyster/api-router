@@ -2,12 +2,9 @@ import express, { Express, Request, Response, NextFunction, json } from 'express
 import cookieParser from 'cookie-parser'
 import fs from 'node:fs'
 import http from 'node:http'
-import httpTerminator from 'http-terminator'
 import https from 'node:https'
 import { IRouterOptions } from 'router'
-
-import { foo } from './typings/foo.js'
-console.log(foo)
+import { HttpTerminator, createHttpTerminator } from 'http-terminator'
 
 export default class {
   /* Express app */
@@ -17,7 +14,7 @@ export default class {
   /* Server */
   readonly server: http.Server | https.Server
   /* Graceful http server terminator */
-  private terminator: httpTerminator.HttpTerminator
+  private terminator: HttpTerminator
   constructor (port: number, options?: IRouterOptions) {
     const { privateKeyPath, certificatePath, cookieSecret } = { ...options }
     /* Set port */
@@ -33,7 +30,7 @@ export default class {
       this.server = https.createServer(credentials, this.app)
     } else this.server = http.createServer(this.app)
     /* Set graceful termination */
-    this.terminator = httpTerminator.createHttpTerminator({
+    this.terminator = createHttpTerminator({
       server: this.server
     })
     /* Enable body parser for POST requests */
