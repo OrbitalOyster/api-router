@@ -1,7 +1,7 @@
 {
   "name": "@orbitaloyster/api-router",
   "description": "Simple express-based router",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "OrbitalOyster",
   "license": "MIT",
   "repository": "OrbitalOyster/api-router",
